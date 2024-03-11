@@ -1,0 +1,6 @@
+framework module Pods_SFNetworkMonitor_Example {
+  umbrella header "Pods-SFNetworkMonitor_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
