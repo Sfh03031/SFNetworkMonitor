@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
         window?.makeKeyAndVisible()
         
-        SFNetworkMonitor.shared.monitoring(useClosures: false)
+        SFNetworkMonitor.shared.monitoring(useClosures: true)
         SFNetworkMonitor.shared.isShowAlertWhenNoNet = true
         
         return true

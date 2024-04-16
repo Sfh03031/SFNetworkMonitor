@@ -5,7 +5,7 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - ReachabilitySwift (5.0.0)
-  - SFNetworkMonitor (0.1.0):
+  - SFNetworkMonitor (0.1.1):
     - ReachabilitySwift
 
 DEPENDENCIES:
@@ -24,8 +24,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SFNetworkMonitor: 5163d2fbcec2cb2cd6ffb3fa638d580fe45d00aa
+  SFNetworkMonitor: 0a98973c4f497d52eff262475af1ff388129aedb
 
 PODFILE CHECKSUM: 6a9000d904193d0cd70557e32dc9c121539c43ba
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0
