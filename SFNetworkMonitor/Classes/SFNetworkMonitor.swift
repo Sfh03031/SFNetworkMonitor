@@ -12,8 +12,11 @@ import UIKit
 import Reachability
 
 @objc public enum SFNetStatus: Int {
+    /// 无网络
     case noNet = 0
+    /// wifi
     case wifi = 1
+    /// 移动流量
     case cellular = 2
 }
 
@@ -34,7 +37,9 @@ import Reachability
     
     fileprivate var alert: UIAlertController?
     
+    
     /// 开始监听
+    /// - Parameter useClosures: 是否使用闭包，也会发通知
     @objc public func monitoring(useClosures: Bool = true) {
         
         let reachability = try? Reachability()

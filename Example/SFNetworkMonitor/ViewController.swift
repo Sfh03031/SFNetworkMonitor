@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SFNetworkMonitor
 
 class ViewController: UIViewController {
 
@@ -15,13 +16,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
         
+        /// 网络状态变化通知
+        NotificationCenter.default.addObserver(self, selector: #selector(netChange(_:)), name: NSNotification.Name(rawValue: SFNetworkMonitor.kNotificationNameNetworkChanged), object: nil)
+        
         let web = WKWebView(frame: self.view.bounds)
         web.load(URLRequest.init(url: URL.init(string: "https://www.baidu.com")!))
         self.view.addSubview(web)
         
+        // 主动获取当前网络状态
         print(SFNetworkMonitor.shared.netStatus.rawValue)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            print(SFNetworkMonitor.shared.netStatus.rawValue)
             if SFNetworkMonitor.shared.netStatus == .cellular {
                 SFNetworkMonitor.shared.showAlertIfCellular(ignore: {
                     print("取消")
@@ -32,6 +38,21 @@ class ViewController: UIViewController {
             }
         })
         
+    }
+    
+    @objc func netChange(_ noti: Notification) {
+        if let obj = noti.object as? SFNetStatus {
+            switch obj {
+            case .cellular:
+                print("流量")
+            case .wifi:
+                print("Wifi")
+            case .noNet:
+                print("断网")
+            default:
+                break
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
