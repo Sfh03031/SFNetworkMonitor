@@ -25,7 +25,7 @@ import Reachability
     /// 单例
     @objc public static let shared = SFNetworkMonitor()
     
-    @objc public static let kNotificationNameNetworkChanged = "SFNetworkMonitorNetworkChanged"
+    @objc public static let kNotificationNameNetworkChanged = NSNotification.Name(rawValue: "SFNetworkMonitorNetworkChanged")
     
     /// 无网络时是否弹窗提示
     @objc public var isShowAlertWhenNoNet = false
@@ -57,12 +57,12 @@ import Reachability
                     self?.netStatus = .noNet
                     self?.showAlertIfNoNet()
                 }
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Self.kNotificationNameNetworkChanged), object: self?.netStatus)
+                NotificationCenter.default.post(name: Self.kNotificationNameNetworkChanged, object: self?.netStatus)
             }
             reachability?.whenUnreachable = { [weak self] _ in
                 self?.netStatus = .noNet
                 self?.showAlertIfNoNet()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Self.kNotificationNameNetworkChanged), object: self?.netStatus)
+                NotificationCenter.default.post(name: Self.kNotificationNameNetworkChanged, object: self?.netStatus)
             }
         } else {
             NotificationCenter.default.addObserver(
@@ -100,7 +100,7 @@ import Reachability
                 self.netStatus = .noNet
                 self.showAlertIfNoNet()
             }
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Self.kNotificationNameNetworkChanged), object: self.netStatus)
+            NotificationCenter.default.post(name: Self.kNotificationNameNetworkChanged, object: self.netStatus)
         }
     }
     

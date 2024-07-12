@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = .orange
         
         /// 网络状态变化通知
-        NotificationCenter.default.addObserver(self, selector: #selector(netChange(_:)), name: NSNotification.Name(rawValue: SFNetworkMonitor.kNotificationNameNetworkChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(netChange(_:)), name: SFNetworkMonitor.kNotificationNameNetworkChanged, object: nil)
         
         let web = WKWebView(frame: self.view.bounds)
         web.load(URLRequest.init(url: URL.init(string: "https://www.baidu.com")!))
