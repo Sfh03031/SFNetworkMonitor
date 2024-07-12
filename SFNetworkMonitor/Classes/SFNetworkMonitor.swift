@@ -21,27 +21,24 @@ import Reachability
 }
 
 @objc open class SFNetworkMonitor: NSObject {
-
     /// 单例
     @objc public static let shared = SFNetworkMonitor()
-    
-    @objc public static let kNotificationNameNetworkChanged = NSNotification.Name(rawValue: "SFNetworkMonitorNetworkChanged")
-    
     /// 无网络时是否弹窗提示
     @objc public var isShowAlertWhenNoNet = false
-    
     /// 网络状态
     @objc public var netStatus: SFNetStatus = .noNet
+    /// 网格状态改变的通知名称
+    @objc public static let kNotificationNameNetworkChanged = NSNotification.Name(rawValue: "SFNetworkMonitorNetworkChanged")
+    /// 是否在监听网络状态
+    @objc private(set) var isMonitoring: Bool = true
     
     fileprivate var reachability: Reachability?
-    
     fileprivate var alert: UIAlertController?
-    
     
     /// 开始监听
     /// - Parameter useClosures: 是否使用闭包，也会发通知
     @objc public func monitoring(useClosures: Bool = true) {
-        
+        self.isMonitoring = true
         let reachability = try? Reachability()
         self.reachability = reachability
         
