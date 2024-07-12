@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
         
+        print("是否在监听网络状态: \(SFNetworkMonitor.shared.isMonitoring)")
+        
         /// 网络状态变化通知
         NotificationCenter.default.addObserver(self, selector: #selector(netChange(_:)), name: SFNetworkMonitor.kNotificationNameNetworkChanged, object: nil)
         
@@ -25,6 +27,7 @@ class ViewController: UIViewController {
         
         // 主动获取当前网络状态
         print(SFNetworkMonitor.shared.netStatus.rawValue)
+ 
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             print(SFNetworkMonitor.shared.netStatus.rawValue)

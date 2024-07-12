@@ -30,7 +30,7 @@ import Reachability
     /// 网格状态改变的通知名称
     @objc public static let kNotificationNameNetworkChanged = NSNotification.Name(rawValue: "SFNetworkMonitorNetworkChanged")
     /// 是否在监听网络状态
-    @objc private(set) var isMonitoring: Bool = false
+    @objc public var isMonitoring: Bool = false
     
     fileprivate var reachability: Reachability?
     fileprivate var alert: UIAlertController?
