@@ -9,6 +9,8 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+[DeepWiki](https://deepwiki.com/Sfh03031/SFNetworkMonitor)
+
 ## Requirements
 
 ## Installation
